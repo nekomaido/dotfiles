@@ -1,0 +1,52 @@
+# Locale
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export MANPAGER='nvim +Man!'
+export EDITOR=nvim
+export PATH="$HOME/.local/bin:$PATH"
+
+{{ if eq .chezmoi.os "linux" -}}
+# Linux-only: Libvirt
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+{{ end -}}
+
+# Starship prompt
+eval "$(starship init zsh)"
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY SHARE_HISTORY INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS HIST_FIND_NO_DUPS HIST_REDUCE_BLANKS
+
+# fzf
+source <(fzf --zsh)
+bindkey -e
+export FZF_DEFAULT_OPTS="--height=80% --layout=reverse --border=rounded"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range :500 {}'"
+
+# Zoxide
+eval "$(zoxide init zsh)"
+
+# Aliases
+alias cls='clear'
+alias v='nvim'
+alias ls='eza --icons --group-directories-first'
+alias l='eza -la --icons --group-directories-first --git'
+alias tree='eza --tree --level=2 --icons'
+
+{{ if eq .chezmoi.os "linux" -}}
+alias yay='paru'
+alias ff='fastfetch'
+alias ckmem='~/Script/check-mem.sh'
+{{ end -}}
+
+# Plugins
+{{ if eq .chezmoi.os "darwin" -}}
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{ else -}}
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{ end -}}
