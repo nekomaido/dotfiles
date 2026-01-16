@@ -1,0 +1,14 @@
+// 1. The Laptop Screen (Left)
+output "AU Optronics 0x8E9D Unknown" {
+    // scale 1.5
+    scale 1
+    position x=0 y=0
+}
+
+// 2. The XP-Pen Tablet (Right)
+// Starts at x=1706 because 2560px / 1.5 scale = 1706.66 logical width
+output "PNP(UGD) MD160QH 20231122" {
+    // scale 1.25
+    scale 1
+    position x=2560 y=0
+}

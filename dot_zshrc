@@ -1,0 +1,82 @@
+# ------------------------------
+# Locale (UTF-8 for Nerd Fonts / tmux)
+# ------------------------------
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# man using nvim
+export MANPAGER='nvim +Man!'
+
+# ------------------------------
+# Libvirt
+# ------------------------------
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+# ------------------------------
+# Default editor
+# ------------------------------
+export EDITOR=nvim
+
+# ------------------------------
+# PATH
+# ------------------------------
+export PATH="$HOME/.local/bin:$PATH"
+
+# ------------------------------
+# Starship prompt
+# ------------------------------
+eval "$(starship init zsh)"
+
+# ------------------------------
+# History configuration
+# ------------------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY          # Append to history file, don't overwrite
+setopt SHARE_HISTORY           # Share history across all sessions
+setopt INC_APPEND_HISTORY      # Write to history immediately
+setopt HIST_IGNORE_DUPS        # Don't save duplicate commands
+setopt HIST_FIND_NO_DUPS       # Don't show duplicates in search
+setopt HIST_REDUCE_BLANKS      # Remove extra blanks from commands
+
+# ------------------------------
+# fzf
+# ------------------------------
+source <(fzf --zsh)
+bindkey -e   # Force emacs keybindings (Ctrl+A / Ctrl+E)
+
+export FZF_DEFAULT_OPTS="--height=80% --layout=reverse --border=rounded --preview-window=right:60%:border-left --bind='ctrl-/:toggle-preview' --bind='ctrl-d:preview-page-down' --bind='ctrl-u:preview-page-up'"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range :500 {} 2>/dev/null || cat {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always --icons --level=2 {} 2>/dev/null || ls -la {}'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window=down:3:wrap"
+
+# ------------------------------
+# Zoxide (smart cd)
+# ------------------------------
+eval "$(zoxide init zsh)"
+
+# ------------------------------
+# Aliases
+# ------------------------------
+alias cls='clear'
+alias yay='paru'
+alias ff='fastfetch'
+alias v='nvim'
+
+# alias cd='__zoxide_z'
+# alias zz='builtin cd'
+
+alias ls='eza --icons --group-directories-first'
+alias l='eza -l -a --icons --group-directories-first --git'
+alias ll='eza -la --icons --octal-permissions --group-directories-first --git'
+alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons'
+alias tree='eza --tree --level=2 --icons --group-directories-first'
+alias ckmem='~/Script/check-mem.sh'
+
+# ------------------------------
+# Plugins (load last)
+# ------------------------------
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

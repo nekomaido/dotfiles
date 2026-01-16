@@ -1,0 +1,9 @@
+configuration {
+  display-drun: "App:";
+  display-window: "Windows:";
+  show-icons: true;
+}
+
+
+
+@theme "/home/nekomaido/.local/share/rofi/themes/noctalia.rasi"
