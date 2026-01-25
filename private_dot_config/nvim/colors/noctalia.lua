@@ -13,46 +13,46 @@ vim.g.colors_name = "noctalia"
 local colors = {
   -- Primary colors
   primary = "#cba6f7",
-  on_primary = "#e6e1e5",
-  primary_container = "#460594",
-  on_primary_container = "#ffffff",
+  on_primary = "#11111b",
+  primary_container = "#6b02e9",
+  on_primary_container = "#e4d0fb",
 
   -- Secondary colors
   secondary = "#fab387",
-  on_secondary = "#000000",
-  secondary_container = "#993b00",
-  on_secondary_container = "#ffffff",
+  on_secondary = "#11111b",
+  secondary_container = "#ce4f00",
+  on_secondary_container = "#100701",
 
   -- Tertiary colors
   tertiary = "#94e2d5",
-  on_tertiary = "#000000",
-  tertiary_container = "#19806f",
-  on_tertiary_container = "#ffffff",
+  on_tertiary = "#11111b",
+  tertiary_container = "#1ba891",
+  on_tertiary_container = "#0e352e",
 
   -- Surface colors
   surface = "#1e1e2e",
-  surface_dim = "#181825",
-  surface_container_lowest = "#1e1e2e",
-  surface_container_low = "#242437",
-  surface_container = "#2a2a41",
-  surface_container_high = "#30304a",
-  surface_container_highest = "#363653",
-  on_surface = "#ffffff",
-  on_surface_variant = "#ffffff",
+  surface_dim = "#161622",
+  surface_container_lowest = "#212232",
+  surface_container_low = "#272839",
+  surface_container = "#313244",
+  surface_container_high = "#3a3b50",
+  surface_container_highest = "#42435c",
+  on_surface = "#cdd6f4",
+  on_surface_variant = "#a3b4eb",
 
   -- Error colors
   error = "#f38ba8",
-  on_error = "#e6e1e5",
-  error_container = "#92072e",
-  on_error_container = "#ffffff",
+  on_error = "#11111b",
+  error_container = "#c8043a",
+  on_error_container = "#fbd7e1",
 
   -- Outline
-  outline = "#7080b8",
-  outline_variant = "#404f82",
+  outline = "#646789",
+  outline_variant = "#44465d",
 
   -- Background
   background = "#1e1e2e",
-  on_background = "#ffffff",
+  on_background = "#cdd6f4",
 }
 
 -- Helper function to set highlights

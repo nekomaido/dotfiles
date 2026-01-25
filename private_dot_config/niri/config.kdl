@@ -328,6 +328,7 @@ binds {
     Mod+A hotkey-overlay-title="Open Anki" {spawn "anki";}
     // Mod+Space repeat=false hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "~/.config/niri/scripts/fuzzel_helper.sh"; }
     Mod+Space { spawn-sh "rofi -show drun"; }
+    F4 { spawn-sh "kitten quick-access-terminal"; }
     
     Mod+W hotkey-overlay-title="Open Looking Glass" {spawn "looking-glass-client";}
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
