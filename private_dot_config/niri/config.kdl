@@ -569,7 +569,7 @@ binds {
     Alt+Print { screenshot-window; }
     Ctrl+1 { spawn-sh "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
     Ctrl+2 { spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder toggle"; }
-    Ctrl+Semicolon { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Ctrl+Semicolon { spawn-sh "qs -c noctalia-shell ipc call plugin:clipper togglePanel"; }
     
 
     // Applications such as remote-desktop clients and software KVM switches may
