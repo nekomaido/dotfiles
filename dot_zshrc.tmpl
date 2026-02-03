@@ -42,10 +42,15 @@ alias v='nvim'
 alias ls='eza --icons --group-directories-first'
 alias l='eza -la --icons --group-directories-first --git'
 alias tree='eza --tree --level=2 --icons'
+alias ff='fastfetch'
+
+# Auto-start tmux on SSH
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -n "$SSH_CONNECTION" ]; then
+    tmux attach-session -t default || tmux new-session -s default
+fi
 
 {{ if eq .chezmoi.os "linux" -}}
 alias yay='paru'
-alias ff='fastfetch'
 alias c='wl-copy'
 alias ckmem='~/Script/check-mem.sh'
 {{ end -}}
