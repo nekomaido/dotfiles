@@ -19,7 +19,6 @@ set -g default-shell /usr/bin/zsh    # use zsh as default shell (Linux)
 {{ end -}}
 set -g base-index 1              # start indexing windows at 1 instead of 0
 set -g detach-on-destroy off     # don't exit from tmux when closing a session
-set -g remain-on-exit on         # keep window/pane alive when shell exits
 set -g destroy-unattached off    # don't destroy session when no clients attached
 set -g escape-time 0             # zero-out escape time delay
 set -g history-limit 1000000     # increase history size (from 2,000)
