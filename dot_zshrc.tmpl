@@ -45,8 +45,9 @@ alias tree='eza --tree --level=2 --icons'
 alias ff='fastfetch'
 
 # Auto-start tmux on SSH
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -n "$SSH_CONNECTION" ]; then
-    tmux attach-session -t default || tmux new-session -s default
+
+if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]]; then
+    exec tmux attach-session -t main 2>/dev/null || tmux new-session -s main
 fi
 
 {{ if eq .chezmoi.os "linux" -}}
