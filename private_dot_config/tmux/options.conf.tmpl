@@ -12,9 +12,15 @@ set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
 set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
 
 # General options
-set -g default-shell /usr/bin/zsh   # use zsh as default shell
+{{ if eq .chezmoi.os "darwin" -}}
+set -g default-shell /bin/zsh        # use zsh as default shell (macOS)
+{{ else -}}
+set -g default-shell /usr/bin/zsh    # use zsh as default shell (Linux)
+{{ end -}}
 set -g base-index 1              # start indexing windows at 1 instead of 0
 set -g detach-on-destroy off     # don't exit from tmux when closing a session
+set -g remain-on-exit on         # keep window/pane alive when shell exits
+set -g destroy-unattached off    # don't destroy session when no clients attached
 set -g escape-time 0             # zero-out escape time delay
 set -g history-limit 1000000     # increase history size (from 2,000)
 set -g renumber-windows on       # renumber all windows when any window is closed

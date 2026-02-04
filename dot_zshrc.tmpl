@@ -50,6 +50,12 @@ alias c='wl-copy'
 alias ckmem='~/Script/check-mem.sh'
 {{ end -}}
 
+# Only tries to create / attach to a tmux session on SSH connection.
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+    # Attaches to the session "main", or creates it if it does not exist yet.
+    tmux attach-session -t main || tmux new-session -s main
+fi
+
 # Plugins
 {{ if eq .chezmoi.os "darwin" -}}
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
