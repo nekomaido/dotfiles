@@ -44,16 +44,6 @@ alias l='eza -la --icons --group-directories-first --git'
 alias tree='eza --tree --level=2 --icons'
 alias ff='fastfetch'
 
-# Auto-launch tmux on SSH connection
-
-if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && [[ -t 1 ]]; then
-    if command -v tmux &> /dev/null; then
-        # -A: Attach to 'main' if it exists, otherwise create it.
-        # -s main: Specifically targets the 'main' session.
-        exec tmux new-session -A -s main
-    fi
-fi
-
 {{ if eq .chezmoi.os "linux" -}}
 alias yay='paru'
 alias c='wl-copy'
