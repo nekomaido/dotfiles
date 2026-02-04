@@ -45,6 +45,7 @@ alias tree='eza --tree --level=2 --icons'
 alias ff='fastfetch'
 
 # Auto-launch tmux on SSH connection
+
 if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && [[ -t 1 ]]; then
     if command -v tmux &> /dev/null; then
         # -A: Attach to 'main' if it exists, otherwise create it.
