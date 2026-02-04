@@ -62,6 +62,10 @@ if [[ -n "$SSH_CONNECTION" ]]; then
     fi
 fi
 
+if [[ -n "$TMUX" ]]; then
+    alias exit="tmux detach"
+fi
+
 {{ if eq .chezmoi.os "linux" -}}
 alias yay='paru'
 alias c='wl-copy'
