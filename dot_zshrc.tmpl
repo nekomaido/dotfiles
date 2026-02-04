@@ -45,25 +45,12 @@ alias tree='eza --tree --level=2 --icons'
 alias ff='fastfetch'
 
 # Auto-launch tmux on SSH connection
-if [[ -n "$SSH_CONNECTION" ]]; then
-    # 1. Ensure we are in an interactive shell (prevents breaking scp/sftp)
-    # 2. Ensure we aren't already inside tmux (prevents nesting)
-    if [[ -t 1 ]] && [[ -z "$TMUX" ]]; then
-        
-        # Check if tmux exists before trying to run it
-        if command -v tmux &> /dev/null; then
-            # 'exec' replaces the current shell with the tmux process.
-            # 'new-session -A -s ssh_tmux' attaches to session 'ssh_tmux' if it exists,
-            # or creates it if it doesn't.
-            exec tmux new-session -A -s ssh_tmux
-        else
-            echo "Warning: tmux not found. Falling back to normal shell."
-        fi
+if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && [[ -t 1 ]]; then
+    if command -v tmux &> /dev/null; then
+        # -A: Attach to 'main' if it exists, otherwise create it.
+        # -s main: Specifically targets the 'main' session.
+        exec tmux new-session -A -s main
     fi
-fi
-
-if [[ -n "$TMUX" ]]; then
-    alias exit="tmux detach"
 fi
 
 {{ if eq .chezmoi.os "linux" -}}
