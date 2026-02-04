@@ -46,8 +46,8 @@ alias ff='fastfetch'
 
 # Auto-start tmux on SSH
 
-if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]]; then
-    exec tmux attach-session -t main 2>/dev/null || tmux new-session -s main
+if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && [[ $- == *i* ]]; then
+    exec tmux new-session -A -s main
 fi
 
 {{ if eq .chezmoi.os "linux" -}}
