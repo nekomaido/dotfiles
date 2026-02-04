@@ -44,10 +44,22 @@ alias l='eza -la --icons --group-directories-first --git'
 alias tree='eza --tree --level=2 --icons'
 alias ff='fastfetch'
 
-# Auto-start tmux on SSH
-
-if [[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && [[ $- == *i* ]]; then
-    exec tmux new-session -A -s main
+# Auto-launch tmux on SSH connection
+if [[ -n "$SSH_CONNECTION" ]]; then
+    # 1. Ensure we are in an interactive shell (prevents breaking scp/sftp)
+    # 2. Ensure we aren't already inside tmux (prevents nesting)
+    if [[ -t 1 ]] && [[ -z "$TMUX" ]]; then
+        
+        # Check if tmux exists before trying to run it
+        if command -v tmux &> /dev/null; then
+            # 'exec' replaces the current shell with the tmux process.
+            # 'new-session -A -s ssh_tmux' attaches to session 'ssh_tmux' if it exists,
+            # or creates it if it doesn't.
+            exec tmux new-session -A -s ssh_tmux
+        else
+            echo "Warning: tmux not found. Falling back to normal shell."
+        fi
+    fi
 fi
 
 {{ if eq .chezmoi.os "linux" -}}
