@@ -4,7 +4,7 @@
 
 XPPEN_VENDOR="28bd"
 XPPEN_PRODUCT="095b"
-XPPEN_XML="$HOME/Script/xppen-usb.xml"
+XPPEN_XML="$HOME/Script/virt/xppen-usb.xml"
 MAX_WAIT_SECONDS=60
 CHECK_INTERVAL=1
 
